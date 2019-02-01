@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculosLib", "CalculosLib\CalculosLib.csproj", "{5B6687F1-0E68-45D8-9788-FC0AAD6A3346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculosLib", "CalculosLib\CalculosLib.csproj", "{5B6687F1-0E68-45D8-9788-FC0AAD6A3346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculosClienteWeb", "CalculosClienteWeb\CalculosClienteWeb.csproj", "{16C41C51-BDF9-4D3E-988C-0959549EB344}"
 EndProject
