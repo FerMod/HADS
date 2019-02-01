@@ -28,12 +28,12 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
 			this.tbTotalSinIva = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
 			this.tbIva = new System.Windows.Forms.TextBox();
+			this.mtbTotal = new System.Windows.Forms.TextBox();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.bCalcular = new System.Windows.Forms.Button();
-			this.mtbTotal = new System.Windows.Forms.TextBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -56,7 +56,7 @@
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+			this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
 			this.tableLayoutPanel1.RowCount = 6;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -64,9 +64,8 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(268, 209);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(287, 209);
 			this.tableLayoutPanel1.TabIndex = 0;
-			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
 			// cbTipoIva
 			// 
@@ -75,7 +74,7 @@
 			this.cbTipoIva.FormattingEnabled = true;
 			this.cbTipoIva.Location = new System.Drawing.Point(132, 52);
 			this.cbTipoIva.Name = "cbTipoIva";
-			this.cbTipoIva.Size = new System.Drawing.Size(100, 26);
+			this.cbTipoIva.Size = new System.Drawing.Size(125, 26);
 			this.cbTipoIva.TabIndex = 2;
 			// 
 			// label1
@@ -111,6 +110,16 @@
 			this.label3.TabIndex = 0;
 			this.label3.Text = "Total sin IVA:";
 			// 
+			// tbTotalSinIva
+			// 
+			this.tbTotalSinIva.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.tbTotalSinIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbTotalSinIva.Location = new System.Drawing.Point(132, 110);
+			this.tbTotalSinIva.Name = "tbTotalSinIva";
+			this.tbTotalSinIva.ReadOnly = true;
+			this.tbTotalSinIva.Size = new System.Drawing.Size(125, 24);
+			this.tbTotalSinIva.TabIndex = 3;
+			// 
 			// label4
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -122,23 +131,23 @@
 			this.label4.TabIndex = 0;
 			this.label4.Text = "IVA:";
 			// 
-			// tbTotalSinIva
-			// 
-			this.tbTotalSinIva.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.tbTotalSinIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tbTotalSinIva.Location = new System.Drawing.Point(132, 110);
-			this.tbTotalSinIva.Name = "tbTotalSinIva";
-			this.tbTotalSinIva.Size = new System.Drawing.Size(100, 24);
-			this.tbTotalSinIva.TabIndex = 3;
-			// 
 			// tbIva
 			// 
 			this.tbIva.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.tbIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbIva.Location = new System.Drawing.Point(132, 147);
 			this.tbIva.Name = "tbIva";
-			this.tbIva.Size = new System.Drawing.Size(100, 24);
+			this.tbIva.ReadOnly = true;
+			this.tbIva.Size = new System.Drawing.Size(125, 24);
 			this.tbIva.TabIndex = 4;
+			// 
+			// mtbTotal
+			// 
+			this.mtbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mtbTotal.Location = new System.Drawing.Point(132, 13);
+			this.mtbTotal.Name = "mtbTotal";
+			this.mtbTotal.Size = new System.Drawing.Size(125, 24);
+			this.mtbTotal.TabIndex = 1;
 			// 
 			// flowLayoutPanel1
 			// 
@@ -147,36 +156,31 @@
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 209);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 40);
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(287, 40);
 			this.flowLayoutPanel1.TabIndex = 1;
 			// 
 			// bCalcular
 			// 
 			this.bCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.bCalcular.Location = new System.Drawing.Point(5, 5);
-			this.bCalcular.Margin = new System.Windows.Forms.Padding(5);
+			this.bCalcular.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
 			this.bCalcular.Name = "bCalcular";
 			this.bCalcular.Size = new System.Drawing.Size(100, 30);
 			this.bCalcular.TabIndex = 5;
 			this.bCalcular.Text = "Calcular";
 			this.bCalcular.UseVisualStyleBackColor = true;
-			// 
-			// mtbTotal
-			// 
-			this.mtbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mtbTotal.Location = new System.Drawing.Point(132, 13);
-			this.mtbTotal.Name = "mtbTotal";
-			this.mtbTotal.Size = new System.Drawing.Size(100, 24);
-			this.mtbTotal.TabIndex = 1;
+			this.bCalcular.Click += new System.EventHandler(this.BCalcular_Click);
 			// 
 			// MainWindow
 			// 
+			this.AcceptButton = this.bCalcular;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(268, 249);
+			this.ClientSize = new System.Drawing.Size(287, 249);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Name = "MainWindow";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Application";
 			this.Load += new System.EventHandler(this.Application_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
