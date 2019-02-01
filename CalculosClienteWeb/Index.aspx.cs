@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,7 +15,7 @@ namespace CalculosClienteWeb {
 		protected void Page_Load(object sender, EventArgs e) {
 
 			// If is the firt time being rendering, init the components
-			if (!IsPostBack) {
+			if(!IsPostBack) {
 				InitDropDownItems();
 			}
 
@@ -49,12 +50,12 @@ namespace CalculosClienteWeb {
 
 			List<TipoIva> enumArray = Enum.GetValues(typeof(TipoIva)).Cast<TipoIva>().ToList();
 			int size = enumArray.Count;
-			for (int i = size - 1; i >= 0; i--) {
+			for(int i = 0; i < size; i++) {
 
 				TipoIva tipoIva = enumArray[i];
 
 				DataRow dr = dt.NewRow();
-				dr[0] = Enum.GetName(typeof(TipoIva), tipoIva);
+				dr[0] = tipoIva.GetName();
 				dr[1] = tipoIva;
 
 				dt.Rows.Add(dr);
@@ -66,22 +67,24 @@ namespace CalculosClienteWeb {
 		}
 
 		protected void BotonCalcular_Click(object sender, EventArgs e) {
-			if (!string.IsNullOrWhiteSpace(textBoxTotal.Text)) {
+
+			if(!string.IsNullOrWhiteSpace(textBoxTotal.Text)) {
 
 				bool isNumeric = double.TryParse(textBoxTotal.Text, out double precioTotal);
-				if (isNumeric) {
+				if(isNumeric) {
 
 					TipoIva tipoIva = (TipoIva)Enum.Parse(typeof(TipoIva), dropDownTipoIva.SelectedItem.Value);
 
-					double precioBruto = Math.Round(CalculoIva.ObtenerPrecioBruto(precioTotal, tipoIva), 2);				;
+					double precioBruto = Math.Round(CalculoIva.ObtenerPrecioBruto(precioTotal, tipoIva), 2);
 					double precioIva = Math.Round(CalculoIva.ObtenerPrecioIva(precioTotal, tipoIva), 2);
 
-					labelTotalSinIva.Text = string.Format("{0:0.00}", precioBruto);
-					lablelIva.Text = string.Format("{0:0.00}", precioIva);
+					labelTotalSinIva.Text = $"{precioBruto:0.00}";
+					lablelIva.Text = $"{precioIva:0.00}";
 
 				}
 
 			}
+
 		}
 
 	}
