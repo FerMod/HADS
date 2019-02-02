@@ -1,12 +1,27 @@
 ﻿
+using System;
+
 namespace CalculosDinero.Iva {
 
-	public enum TipoIva : int { General = 21, Reducido = 10, SuperReducido = 4 };
+	public enum TipoIva { General, Reducido, SuperReducido, Ninguno = -1 };
 
 	public static class TipoIvaExtension {
 
-		public static double Value(this TipoIva tipoIva) {
-			return (int)tipoIva / (double)100;
+		public static double GetValue(this TipoIva tipoIva) {
+			switch(tipoIva) {
+				case TipoIva.General:
+					return 0.21;
+				case TipoIva.Reducido:
+					return 0.10;
+				case TipoIva.SuperReducido:
+					return 0.04;
+				default:
+					return 0.0;
+			}
+		}
+
+		public static string GetName(this TipoIva tipoIva) {
+			return Enum.GetName(typeof(TipoIva), tipoIva);
 		}
 
 	}

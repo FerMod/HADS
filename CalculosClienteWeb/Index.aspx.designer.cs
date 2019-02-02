@@ -49,21 +49,30 @@ namespace CalculosClienteWeb {
         protected global::System.Web.UI.WebControls.Button botonCalcular;
         
         /// <summary>
-        /// labelTotalSinIva control.
+        /// labelTotalSinIvaValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelTotalSinIva;
+        protected global::System.Web.UI.WebControls.Label labelTotalSinIvaValue;
         
         /// <summary>
-        /// lablelIva control.
+        /// labelIva control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lablelIva;
+        protected global::System.Web.UI.WebControls.Label labelIva;
+        
+        /// <summary>
+        /// labelIvaValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelIvaValue;
     }
 }

@@ -23,10 +23,12 @@
         </div>
         <hr />
         <div style="margin: 5px; padding: 5px">
-            <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True">Total sin IVA: </asp:Label><asp:Label ID="labelTotalSinIva" Style="vertical-align: central;" runat="server"></asp:Label>
+            <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True">Total sin IVA: </asp:Label>
+            <asp:Label ID="labelTotalSinIvaValue" Style="vertical-align: central;" runat="server"></asp:Label>
         </div>
         <div style="margin: 5px; padding: 5px">
-            <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True">IVA: </asp:Label><asp:Label ID="lablelIva" Style="vertical-align: central;" runat="server"></asp:Label>
+            <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True" ID="labelIva">IVA (0%): </asp:Label>
+            <asp:Label ID="labelIvaValue" Style="vertical-align: central;" runat="server"></asp:Label>
         </div>
     </form>
 </body>
