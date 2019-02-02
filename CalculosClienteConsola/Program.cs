@@ -11,16 +11,16 @@ namespace CalculosClienteConsola {
 		static void Main(string[] args) {
 
 			double total = 0.0;
-			TipoIva tipoIva = TipoIva.Ninguno;
+			TipoIva tipoIva;
 
 			total = GetUserInputTotalValue();
 
-			IEnumerable<TipoIva> tipoIvaList = Enum.GetValues(typeof(TipoIva)).Cast<TipoIva>();
+			List<TipoIva> tipoIvaList = Enum.GetValues(typeof(TipoIva)).Cast<TipoIva>().ToList();
 			int size = tipoIvaList.Count();
 			Console.WriteLine();
 			Console.WriteLine("Tipos de IVA: ");
 			for(int i = 0; i < size; i++) {
-				Console.WriteLine($"{i} - {tipoIvaList.ElementAt(i).GetName()}");
+				Console.WriteLine($"{i} - {tipoIvaList[i].GetName()}");
 			}
 
 			tipoIva = GetUserInputTipoIva(size);
