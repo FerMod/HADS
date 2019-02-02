@@ -1,11 +1,9 @@
 ﻿
 using System;
-using System.Collections;
-using System.Linq;
 
 namespace CalculosDinero.Iva {
 
-	public enum TipoIva { General, Reducido, SuperReducido, Ninguno = -1};
+	public enum TipoIva { General, Reducido, SuperReducido, Ninguno = -1 };
 
 	public static class TipoIvaExtension {
 

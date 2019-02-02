@@ -16,13 +16,11 @@ namespace CalculosClienteWeb {
 
 	public partial class Index : Page {
 
-		private RegionInfo regionInfo;
+		private RegionInfo regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
 
 		#region Components Events
 
 		protected void Page_Load(object sender, EventArgs e) {
-
-			regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
 
 			// If is the firt time being rendering, init the components
 			if(!IsPostBack) {
