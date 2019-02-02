@@ -1,31 +1,37 @@
-﻿using CalculosDinero;
-using CalculosDinero.Iva;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
+using CalculosDinero;
+using CalculosDinero.Iva;
 
 namespace CalculosClienteWindows {
 
 	public partial class MainWindow : Form {
 
+		private RegionInfo regionInfo;
+
 		public MainWindow() {
 			InitializeComponent();
+
+			regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
+
+			lTotalSinIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
+			lIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
+
 		}
+
+		#region Components Initialization
+
+		protected void InitDropDownItems() {
+			cbTipoIva.DataSource = Enum.GetValues(typeof(TipoIva));
+		}
+
+		#endregion
+
+		#region Components Events
 
 		private void Application_Load(object sender, EventArgs e) {
 			InitDropDownItems();
-		}
-
-		protected void InitDropDownItems() {
-
-			cbTipoIva.DataSource = Enum.GetValues(typeof(TipoIva));
-
 		}
 
 		private void BCalcular_Click(object sender, EventArgs e) {
@@ -35,14 +41,13 @@ namespace CalculosClienteWindows {
 				bool isNumeric = double.TryParse(mtbTotal.Text, out double precioTotal);
 				if(isNumeric) {
 
-					TipoIva tipoIva;
-					Enum.TryParse<TipoIva>(cbTipoIva.SelectedValue.ToString(), out tipoIva);
+					Enum.TryParse(cbTipoIva.SelectedValue.ToString(), out TipoIva tipoIva);
 
 					double precioBruto = Math.Round(CalculoIva.ObtenerPrecioBruto(precioTotal, tipoIva), 2);
 					double precioIva = Math.Round(CalculoIva.ObtenerPrecioIva(precioTotal, tipoIva), 2);
 
-					tbTotalSinIva.Text = $"{precioBruto:0.00}";
-					tbIva.Text = $"{precioIva:0.00}";
+					lTotalSinIva.Text = $"{precioBruto:0.00} {regionInfo.CurrencySymbol}";
+					lIva.Text = $"{precioIva:0.00} {regionInfo.CurrencySymbol}";
 
 				}
 
@@ -50,6 +55,7 @@ namespace CalculosClienteWindows {
 
 		}
 
+		#endregion
 	}
 
 }
