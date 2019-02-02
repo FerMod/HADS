@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CalculosDinero.Iva {
 
-	public enum TipoIva { General, Reducido, SuperReducido };
+	public enum TipoIva { General, Reducido, SuperReducido, Ninguno = -1};
 
 	public static class TipoIvaExtension {
 
