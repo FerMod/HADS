@@ -14,16 +14,8 @@ namespace CalculosClienteConsola {
 			TipoIva tipoIva;
 
 			total = GetUserInputTotalValue();
-
-			List<TipoIva> tipoIvaList = Enum.GetValues(typeof(TipoIva)).Cast<TipoIva>().ToList();
-			int size = tipoIvaList.Count();
 			Console.WriteLine();
-			Console.WriteLine("Tipos de IVA: ");
-			for(int i = 0; i < size; i++) {
-				Console.WriteLine($"{i} - {tipoIvaList[i].GetName()}");
-			}
-
-			tipoIva = GetUserInputTipoIva(size);
+			tipoIva = GetUserInputTipoIvaValue();
 
 			double totalSinIva = CalculoIva.ObtenerPrecioBruto(total, tipoIva);
 			double iva = CalculoIva.ObtenerPrecioIva(total, tipoIva);
@@ -32,34 +24,10 @@ namespace CalculosClienteConsola {
 			Console.WriteLine($"Total sin IVA: {totalSinIva}");
 			Console.WriteLine($"IVA: {iva}");
 			Console.WriteLine();
-			Console.WriteLine("Pulse cualquier tecla para finalizar...");
-			Console.ReadKey();
 
-		}
+			Console.WriteLine("Pulse cualquier tecla para salir...");
+			Console.ReadKey(true);
 
-		private static TipoIva GetUserInputTipoIva(int size) {
-
-			TipoIva tipoIva = TipoIva.Ninguno;
-			bool error = false;
-			do {
-
-				Console.WriteLine();
-				Console.WriteLine("Seleccione tipo de IVA:");
-				Console.Write("> ");
-				if(!int.TryParse(Console.ReadLine(), out int seleccionTipoIva)) {
-					error = true;
-					Console.WriteLine("El valor introducido no es valido.");
-				} else if(seleccionTipoIva < 0 || seleccionTipoIva > size) {
-					error = true;
-					Console.WriteLine("Seleccion no valida.");
-				} else {
-					error = false;
-					tipoIva = (TipoIva)Enum.ToObject(typeof(TipoIva), seleccionTipoIva);
-				}
-
-			} while(error);
-
-			return tipoIva;
 		}
 
 		private static double GetUserInputTotalValue() {
@@ -73,7 +41,7 @@ namespace CalculosClienteConsola {
 				Console.Write("> ");
 				if(!double.TryParse(Console.ReadLine(), out total)) {
 					error = true;
-					Console.WriteLine("El valor introducido no es valido.");
+					Console.WriteLine("\nEl valor introducido no es valido.");
 				} else {
 					error = false;
 				}
@@ -82,6 +50,39 @@ namespace CalculosClienteConsola {
 
 			return total;
 
+		}
+
+		private static TipoIva GetUserInputTipoIvaValue() {
+
+			bool error = false;
+			TipoIva tipoIva = TipoIva.Ninguno;
+
+			List<TipoIva> tipoIvaList = Enum.GetValues(typeof(TipoIva)).Cast<TipoIva>().ToList();
+			int size = tipoIvaList.Count();
+			Console.WriteLine("Tipos de IVA: ");
+			for(int i = 0; i < size; i++) {
+				Console.WriteLine($"{i} - {tipoIvaList[i].GetName()}");
+			}
+			Console.WriteLine();
+
+			do {
+
+				Console.WriteLine("Seleccione tipo de IVA:");
+				Console.Write("> ");
+				if(!int.TryParse(Console.ReadLine(), out int seleccionTipoIva)) {
+					error = true;
+					Console.WriteLine("\nEl valor introducido no es valido.");
+				} else if(seleccionTipoIva < 0 || seleccionTipoIva > size) {
+					error = true;
+					Console.WriteLine("\nSeleccion no valida.");
+				} else {
+					error = false;
+					tipoIva = (TipoIva)Enum.ToObject(typeof(TipoIva), seleccionTipoIva);
+				}
+
+			} while(error);
+
+			return tipoIva;
 		}
 	}
 
