@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalculosLib;
 using CalculosLib.Iva;
 
 namespace DataBaseAccess {
 
 	public class Factura {
 
-		public long Id { get; set; }
-		public double Total { get; set; }
-		public TipoIva Iva { get; set; }
+		public long Id { get; private set; }
+		public double Total { get; private set; }
+		public TipoIva Iva { get; private set; }
+
+		public double PrecioBruto { get; private set; }
+		public double PrecioIva { get; private set; }
 
 		public Factura(long id, double total, TipoIva iva) {
+
 			this.Id = id;
 			this.Total = total;
 			this.Iva = iva;
+
+			this.PrecioBruto = CalculoIva.ObtenerPrecioBruto(Total, this.Iva);
+			this.PrecioIva = CalculoIva.ObtenerPrecioIva(Total, this.Iva);
+
 		}
 
 		public static bool operator ==(Factura a, Factura b) {

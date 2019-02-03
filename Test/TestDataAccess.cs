@@ -30,7 +30,7 @@ namespace Tests.DataBaseAccess {
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp() {
-			dataAccess = new DataAccess();
+			dataAccess = DataAccess.Instance;
 		}
 
 		[SetUp]
