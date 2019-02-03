@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using CalculosDinero;
-using CalculosDinero.Iva;
+using CalculosLib;
+using CalculosLib.Iva;
 using NUnit.Framework;
 
 namespace Tests {

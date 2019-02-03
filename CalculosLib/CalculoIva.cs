@@ -1,7 +1,7 @@
 ﻿
-using CalculosDinero.Iva;
+using CalculosLib.Iva;
 
-namespace CalculosDinero {
+namespace CalculosLib {
 
 	public static class CalculoIva {
 

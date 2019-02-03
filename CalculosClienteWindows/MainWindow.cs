@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using CalculosDinero;
-using CalculosDinero.Iva;
+using CalculosLib;
+using CalculosLib.Iva;
 
 namespace CalculosClienteWindows {
 

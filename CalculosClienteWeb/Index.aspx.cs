@@ -8,8 +8,8 @@ using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CalculosDinero;
-using CalculosDinero.Iva;
+using CalculosLib;
+using CalculosLib.Iva;
 
 
 namespace CalculosClienteWeb {
