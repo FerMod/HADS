@@ -7,7 +7,7 @@ namespace Tests.DataBaseAccess {
 
 	public class TestDataAccess {
 
-		private DataAccess dataAccess;
+		private IDataAccess dataAccess;
 
 		private static IEnumerable<TestCaseData> FacturaTestData {
 			get {
@@ -35,27 +35,27 @@ namespace Tests.DataBaseAccess {
 
 		[SetUp]
 		public void SetUp() {
-			dataAccess.ListaFacturas.Clear();
+			dataAccess.Facturas.Clear();
 		}
 
 		[Test, Description("Add Factura"), TestCaseSource(nameof(FacturaTestData))]
 		public void TestAddFactura(int id, double total, TipoIva tipoIva) {
 			Factura factura = new Factura(id, total, tipoIva);
-			Assert.That(dataAccess.ListaFacturas.TryAdd(id, factura));
+			Assert.That(dataAccess.Facturas.TryAdd(id, factura));
 		}
 
 		[Test, Description("Remove Factura"), TestCaseSource(nameof(FacturaTestData))]
 		public void TestRemoveFactura(int id, double total, TipoIva tipoIva) {
 			Factura factura = new Factura(id, total, tipoIva);
-			Assume.That(dataAccess.ListaFacturas.TryAdd(id, factura));
-			Assert.That(dataAccess.ListaFacturas.Remove(factura.Id));
+			Assume.That(dataAccess.Facturas.TryAdd(id, factura));
+			Assert.That(dataAccess.Facturas.Remove(factura.Id));
 		}
 
 		[Test, Description("Get Factura"), TestCaseSource(nameof(FacturaTestData))]
 		public void TestGetFactura(int id, double total, TipoIva tipoIva) {
 			Factura expected = new Factura(id, total, tipoIva);
-			Assume.That(dataAccess.ListaFacturas.TryAdd(id, expected));
-			Assert.That(dataAccess.ListaFacturas.TryGetValue(id, out Factura factura));
+			Assume.That(dataAccess.Facturas.TryAdd(id, expected));
+			Assert.That(dataAccess.Facturas.TryGetValue(id, out Factura factura));
 			Assert.That(expected, Is.EqualTo(factura));
 		}
 

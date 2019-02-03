@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace DataBaseAccess {
 
-	public class DataAccess {
+	public class DataAccess : IDataAccess {
 
-		public Dictionary<long, Factura> ListaFacturas { get; private set; } = new Dictionary<long, Factura>();
+		public Dictionary<long, Factura> Facturas { get; private set; } = new Dictionary<long, Factura>();
 
 	}
 
