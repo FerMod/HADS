@@ -15,8 +15,8 @@ namespace CalculosClienteWindows {
 
 			regionInfo = new RegionInfo(System.Threading.Thread.CurrentThread.CurrentUICulture.LCID);
 
-			lTotalSinIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
-			lIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
+			tbIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
+			tbTotalSinIva.Text = $"0.00 {regionInfo.CurrencySymbol}";
 
 		}
 
@@ -36,9 +36,9 @@ namespace CalculosClienteWindows {
 
 		private void BCalcular_Click(object sender, EventArgs e) {
 
-			if(!string.IsNullOrWhiteSpace(mtbTotal.Text)) {
+			if(!string.IsNullOrWhiteSpace(tbTotal.Text)) {
 
-				bool isNumeric = double.TryParse(mtbTotal.Text, out double precioTotal);
+				bool isNumeric = double.TryParse(tbTotal.Text, out double precioTotal);
 				if(isNumeric) {
 
 					Enum.TryParse(cbTipoIva.SelectedValue.ToString(), out TipoIva tipoIva);
@@ -46,8 +46,8 @@ namespace CalculosClienteWindows {
 					double precioBruto = Math.Round(CalculoIva.ObtenerPrecioBruto(precioTotal, tipoIva), 2);
 					double precioIva = Math.Round(CalculoIva.ObtenerPrecioIva(precioTotal, tipoIva), 2);
 
-					lTotalSinIva.Text = $"{precioBruto:0.00} {regionInfo.CurrencySymbol}";
-					lIva.Text = $"{precioIva:0.00} {regionInfo.CurrencySymbol}";
+					tbTotalSinIva.Text = $"{precioBruto:0.00} {regionInfo.CurrencySymbol}";
+					tbIva.Text = $"{precioIva:0.00} {regionInfo.CurrencySymbol}";
 
 				}
 
