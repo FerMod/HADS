@@ -6,7 +6,7 @@ namespace DataBaseAccess {
 
 	public class DataAccess {
 
-		public Dictionary<long, Factura> ListaFacturas { get; set; } = new Dictionary<long, Factura>();
+		public Dictionary<long, Factura> ListaFacturas { get; private set; } = new Dictionary<long, Factura>();
 
 	}
 
