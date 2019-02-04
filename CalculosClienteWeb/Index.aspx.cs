@@ -8,8 +8,8 @@ using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CalculosDinero;
-using CalculosDinero.Iva;
+using CalculosLib;
+using CalculosLib.Iva;
 
 
 namespace CalculosClienteWeb {
@@ -25,22 +25,9 @@ namespace CalculosClienteWeb {
 			// If is the firt time being rendering, init the components
 			if(!IsPostBack) {
 				InitDropDownItems();
-				InitLabelTotalSinIvaValue();
-				InitLabelIvaValue();
+				InitLabelsText();
 			}
 
-		}
-
-		private void InitLabelIvaValue() {
-			labelIvaValue.Text = $"0.00 {regionInfo.CurrencySymbol}";
-		}
-
-		private void InitLabelTotalSinIvaValue() {
-			labelTotalSinIvaValue.Text = $"0.00 {regionInfo.CurrencySymbol}";
-		}
-
-		private void UpdateLabelIva(TipoIva tipoIva) {
-			labelIva.Text = $"IVA ({Math.Round(tipoIva.GetValue() * 100, 2)}%):";
 		}
 
 		protected void BotonCalcular_Click(object sender, EventArgs e) {
@@ -51,14 +38,12 @@ namespace CalculosClienteWeb {
 				if(isNumeric) {
 
 					TipoIva tipoIva = (TipoIva)Enum.Parse(typeof(TipoIva), dropDownTipoIva.SelectedItem.Value);
-
-					UpdateLabelIva(tipoIva);
-
 					double precioBruto = Math.Round(CalculoIva.ObtenerPrecioBruto(precioTotal, tipoIva), 2);
 					double precioIva = Math.Round(CalculoIva.ObtenerPrecioIva(precioTotal, tipoIva), 2);
 
-					labelTotalSinIvaValue.Text = $"{precioBruto:0.00} {regionInfo.CurrencySymbol}";
-					labelIvaValue.Text = $"{precioIva:0.00} {regionInfo.CurrencySymbol}";
+					UpdateLabelTotalSinIvaValue(precioBruto);
+					UpdateLabelIva(tipoIva);
+					UpdateLabelIvaValue(precioIva);
 
 				}
 
@@ -69,6 +54,11 @@ namespace CalculosClienteWeb {
 		#endregion
 
 		#region Components Initializations
+
+		protected void InitLabelsText() {
+			UpdateLabelTotalSinIvaValue();
+			UpdateLabelIvaValue();
+		}
 
 		protected void InitDropDownItems() {
 
@@ -99,6 +89,18 @@ namespace CalculosClienteWeb {
 		}
 
 		#endregion
+
+		private void UpdateLabelTotalSinIvaValue(double value = 0.0) {
+			labelTotalSinIvaValue.Text = string.Format("{0:0.00} {1}", value, regionInfo.CurrencySymbol);
+		}
+
+		private void UpdateLabelIva(TipoIva tipoIva = TipoIva.Ninguno) {
+			labelIva.Text = string.Format("IVA ({0}%):", Math.Round(tipoIva.GetValue() * 100, 2));
+		}
+
+		private void UpdateLabelIvaValue(double value = 0.0) {
+			labelIvaValue.Text = string.Format("{0:0.00} {1}", value, regionInfo.CurrencySymbol);
+		}
 
 		private DataView CreateDataSource() {
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CalculosDinero;
-using CalculosDinero.Iva;
+using CalculosLib;
+using CalculosLib.Iva;
 
 namespace CalculosClienteConsola {
 

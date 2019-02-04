@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace CalculosDinero.Iva {
+namespace CalculosLib.Iva {
 
 	public enum TipoIva { General, Reducido, SuperReducido, Ninguno = -1 };
 
