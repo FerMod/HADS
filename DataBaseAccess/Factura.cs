@@ -10,19 +10,22 @@ namespace DataBaseAccess {
 
 		public long Id { get; private set; }
 		public double Total { get; private set; }
-		public TipoIva Iva { get; private set; }
+		public TipoIva TipoIva { get; private set; }
 
-		public double PrecioBruto { get; private set; }
-		public double PrecioIva { get; private set; }
+		private Lazy<double> lazyPrecioBruto;
+		public double PrecioBruto => lazyPrecioBruto.Value;
 
-		public Factura(long id, double total, TipoIva iva) {
+		private Lazy<double> lazyPrecioIva;
+		public double PrecioIva => lazyPrecioIva.Value;
+
+		public Factura(long id, double total, TipoIva tipoIva) {
 
 			this.Id = id;
 			this.Total = total;
-			this.Iva = iva;
+			this.TipoIva = tipoIva;
 
-			this.PrecioBruto = CalculoIva.ObtenerPrecioBruto(Total, this.Iva);
-			this.PrecioIva = CalculoIva.ObtenerPrecioIva(Total, this.Iva);
+			lazyPrecioBruto = new Lazy<double>(() => CalculoIva.ObtenerPrecioBruto(total, tipoIva));
+			lazyPrecioIva = new Lazy<double>(() => CalculoIva.ObtenerPrecioIva(total, tipoIva));
 
 		}
 
@@ -41,7 +44,7 @@ namespace DataBaseAccess {
 			// Return true if the fields match
 			return (a.Id == b.Id)
 				&& (a.Total == b.Total)
-				&& (a.Iva == b.Iva);
+				&& (a.TipoIva == b.TipoIva);
 		}
 
 		public static bool operator !=(Factura a, Factura b) {
@@ -72,7 +75,7 @@ namespace DataBaseAccess {
 			// Return true if the fields match.
 			return (this.Id == other.Id)
 				&& (this.Total == other.Total)
-				&& (this.Iva == other.Iva);
+				&& (this.TipoIva == other.TipoIva);
 		}
 
 		public override int GetHashCode() {
@@ -83,7 +86,7 @@ namespace DataBaseAccess {
 
 				hash = hash * 23 + GetHashCode(Id);
 				hash = hash * 23 + GetHashCode(Total);
-				hash = hash * 23 + GetHashCode(Iva);
+				hash = hash * 23 + GetHashCode(TipoIva);
 
 				return hash;
 			}
