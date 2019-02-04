@@ -13,7 +13,6 @@ namespace CalculosLib {
 			return total - ObtenerPrecioBruto(total, tipoIva);
 		}
 
-
 	}
 
 }
