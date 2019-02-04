@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CalculosClienteWeb.Index" Debug="false" Trace="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CalculosClienteWeb.Index" Debug="true" Trace="false" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
         <div style="margin: 5px; padding: 5px">
             <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True">Total a pagar: </asp:Label>
             <br />
-            <asp:TextBox ID="textBoxTotal" runat="server" Style="vertical-align: central; margin: 5px 5px 5px 0px;" Height="18px" Width="130px"></asp:TextBox>
+            <asp:TextBox ID="textBoxTotal" runat="server" autocomplete="off" Style="vertical-align: central; margin: 5px 5px 5px 0px;" Height="18px" Width="130px"></asp:TextBox>
         </div>
         <div style="margin: 5px; padding: 5px">
             <asp:Label Style="vertical-align: central;" runat="server" Font-Bold="True">Tipo de IVA: </asp:Label>
