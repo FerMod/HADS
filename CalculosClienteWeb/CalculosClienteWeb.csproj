@@ -66,12 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="IndexAdvanced.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IndexAdvanced.aspx.cs">
+      <DependentUpon>IndexAdvanced.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndexAdvanced.aspx.designer.cs">
+      <DependentUpon>IndexAdvanced.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -99,6 +107,10 @@
     <ProjectReference Include="..\CalculosLib\CalculosLib.csproj">
       <Project>{5b6687f1-0e68-45d8-9788-fc0aad6a3346}</Project>
       <Name>CalculosLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseAccess\DataBaseAccess.csproj">
+      <Project>{e68556a2-751b-4db5-9d7a-121392b0beed}</Project>
+      <Name>DataBaseAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
