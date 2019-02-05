@@ -2,6 +2,7 @@
 #define INIT_FACTURAS
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Web.UI;
 using CalculosLib.Iva;
@@ -21,6 +22,7 @@ namespace CalculosClienteWeb {
 			// If is the firt time being rendering, init the components
 			if(!IsPostBack) {
 #if INIT_FACTURAS
+				Debug.WriteLine("Generating test data", "Initialization");
 				dataAccess.Facturas.Add(121212, new Factura(121212, 1000, TipoIva.General));
 				dataAccess.Facturas.Add(131313, new Factura(131313, 100, TipoIva.Reducido));
 				dataAccess.Facturas.Add(1, new Factura(1, 47, TipoIva.SuperReducido));

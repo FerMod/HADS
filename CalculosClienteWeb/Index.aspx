@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CalculosClienteWeb.Index" Debug="true" Trace="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CalculosClienteWeb.Index" Debug="false" Trace="false" %>
 
 <!DOCTYPE html>
 
