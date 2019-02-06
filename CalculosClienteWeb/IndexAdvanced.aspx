@@ -16,7 +16,7 @@
             <br />
             <asp:TextBox ID="textBoxCodigoFactura" runat="server" Style="vertical-align: central; margin: 5px 5px 5px 0px;" Height="18px" Width="250px"></asp:TextBox>
             <asp:Button ID="botonBuscar" runat="server" Text="Buscar Factura" OnClick="BotonBuscar_Click" Width="120px" CssClass="auto-style1" Height="30px" />
-        	<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBoxCodigoFactura" ErrorMessage="Este campo no puede estar vacío."></asp:RequiredFieldValidator>
+        	<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBoxCodigoFactura" ErrorMessage="Este campo no puede estar vacío." Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         <hr />
         <div style="margin: 5px; padding: 5px">
